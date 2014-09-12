@@ -12,6 +12,15 @@ public class Usuario {
 
 	
 	
+	public Usuario(String name, String password, String twitterAccessToken,
+			String twitterSecret) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.twitterAccessToken = twitterAccessToken;
+		this.twitterSecret = twitterSecret;
+	}
+
 	
 	
 	public String getName() {
