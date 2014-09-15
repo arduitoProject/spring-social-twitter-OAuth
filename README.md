@@ -2,7 +2,7 @@
 >>>>>> Spring Social Twitter OAuth
 >>>>>> @author ptamburro
 
-Ejemplo de Spring Social con Twitter, que incluye la autentificacion OAuth 1.0a.
+Ejemplo de Spring Social con Twitter, que incluye la autentificacion OAuth 1.0a.<br>
 Esta aplicacion permite desde una jsp generar tuits directamente en la cuenta de usuarios
 que den los permisos correspondientes. 
 
