@@ -31,11 +31,11 @@ public class SocialController {
 	
 	
 	
-	/** Send redirect to url in twitter for login
+	/**
+	 * Rest que realiza la conexion con twitter para solicitar el RequestToken, 
+	 * genero la url de autentificacion y hago el redirect
 	 * 
-	 * @param request
-	 * @return
-	 * @throws IOException 
+	 * @author ptamburro
 	 */
 	@RequestMapping(value = "/connect/twitter", method = RequestMethod.GET)
 	public void requestConnectionToTwitter(HttpServletRequest request , HttpServletResponse response) throws IOException {
@@ -48,7 +48,7 @@ public class SocialController {
 		HttpSession session=request.getSession();
 		session.setAttribute(ATTRIBUTE_TOKEN_SESSION, requestToken);
 
-	    //armo la url de autentificacion
+	    //armo la url de autentificacion  (ejemplo: https://api.twitter.com/oauth/authorize?oauth_token=95neH6yH44Gmsz4cBbGxWvcBIpsIU1EU)
 		String url =  oauthService.getAuthorizationUrl(requestToken);
 	    
 		//hago un redirect a la url
@@ -57,8 +57,12 @@ public class SocialController {
 	
 	
 	/** 
-	 * Callback URL
-	 * Este servicio es invocado por twitter cuando el usuario autoriza el acceso a nuestra app
+	 * Callback URL.
+	 * Este servicio es invocado por twitter cuando el usuario autoriza el acceso a nuestra app.
+	 * Lo que hace es validar esta invocacion con el token seteado previamente en la session, obtiene los 
+	 * access tokens del usuario y de esta forma el usr tiene acceso a la app.
+	 * 
+	 * @author ptamburro
 	 */
 	@RequestMapping(value = "/callback/twitter", method = RequestMethod.GET, params = "oauth_token")
 	public ModelAndView authorizeTwitterCallback(@RequestParam(value = "oauth_verifier", defaultValue = "verifier") String verifier, HttpServletRequest request, HttpServletResponse response) {
@@ -93,12 +97,12 @@ public class SocialController {
 	
 	public static void main(String[] args) {
 		   
-		   Usuario usuario = new Usuario("bambaSpring", "nose", "2786148523-2qamrro8uc8T508TGoBTCnOMPszEhd0kFFxJUaf", "EbK667Z1UCqrW9EKWtccl6VOiAyAimU8zCPndx2mq79iu");
+		Usuario usuario = new Usuario("bambaSpring", "nose", "2786148523-2qamrro8uc8T508TGoBTCnOMPszEhd0kFFxJUaf", "EbK667Z1UCqrW9EKWtccl6VOiAyAimU8zCPndx2mq79iu");
 		
 		String consumerKey = "6rjiEAcIfxOGKMT0FTl2KlPKn";
 		String consumerSecret =  "VjVDs5tvNXzSJKp1Y8F5wcpQDuy8Fukrzm6wcX0x7bgHqp0e1I";
-				String accessToken = "XXX";
-				String accessTokenSecret =  "XXXX";
+		String accessToken = "XXX";
+		String accessTokenSecret =  "XXXX";
 		
 		  TwitterTemplate tp = new TwitterTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 		

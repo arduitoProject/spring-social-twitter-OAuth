@@ -22,34 +22,39 @@ public class TwitterProvider {
     private Environment env;
 
 
+    /**
+     * Metodo que a partir de credenciales de Twitter genera y devuelve un OAuthService
+     * @author ptamburro
+     */
 	public OAuthService getOAuthService() {
-		
-	    OAuthService service = new ServiceBuilder()
-        .provider(TwitterApi.SSL.class)
-        .apiKey(env.getProperty("twitter.apiKey"))
-        .apiSecret(env.getProperty("twitter.apiSecret"))
-        .callback(env.getProperty("twitter.callbackUrl"))
-        .build();
-	    
-	    
-	    return service;
-		
+
+		OAuthService service = new ServiceBuilder()
+				.provider(TwitterApi.SSL.class)
+				.apiKey(env.getProperty("bambaSpring.twitter.apiKey"))
+				.apiSecret(env.getProperty("bambaSpring.twitter.apiSecret"))
+				.callback(env.getProperty("bambaSpring.twitter.callbackUrl"))
+				.build();
+
+		return service;
+
 	}
 	
-	public String getAuthorizeUrl() {
-		return "https://api.twitter.com/oauth/authorize";
-	}
-	
-	
-	/** Factory method to create twitter template (request-scoped) for current user
+		
+	/**
+	 * Metodo que al recibir los access token de un usuario devuelve un
+	 * TwitterTemplate
 	 * 
-	 * @return
+	 * @author ptamburro
 	 */
 	public TwitterTemplate createTemplate(Usuario usuario) {
-	    if (usuario.getTwitterAccessToken() != null) {
-	    	return new TwitterTemplate(env.getProperty("twitter.apiKey"), env.getProperty("twitter.apiSecret"), usuario.getTwitterAccessToken(), usuario.getTwitterSecret());
-	    } else {
-	    	return null;
-	    }
+		if (usuario.getTwitterAccessToken() != null
+				&& usuario.getTwitterSecret() != null) {
+			return new TwitterTemplate(
+					env.getProperty("bambaSpring.twitter.apiKey"),
+					env.getProperty("bambaSpring.twitter.apiSecret"),
+					usuario.getTwitterAccessToken(), usuario.getTwitterSecret());
+		} else {
+			return null;
+		}
 	}
 }

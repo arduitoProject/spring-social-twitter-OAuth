@@ -54,9 +54,5 @@ public class Usuario {
 	public void setTwitterSecret(String twitterSecret) {
 		this.twitterSecret = twitterSecret;
 	}
-
-	
-	
-	
 	
 }
