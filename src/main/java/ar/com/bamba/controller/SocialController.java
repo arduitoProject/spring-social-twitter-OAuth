@@ -2,6 +2,7 @@ package ar.com.bamba.controller;
 
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +38,7 @@ public class SocialController {
 	 * 
 	 * @author ptamburro
 	 */
-	@RequestMapping(value = "/connect/twitter", method = RequestMethod.GET)
+	@RequestMapping(value = "/oauth/twitter", method = RequestMethod.GET)
 	public void requestConnectionToTwitter(HttpServletRequest request , HttpServletResponse response) throws IOException {
 		
 	    //obtengo de twitter un requestToken
@@ -84,9 +85,10 @@ public class SocialController {
 	   
 	   //Manejo simple de paginas 
 	   	ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Social Twitter");
-		model.addObject("message", "Has publicado un mensaje en twitter por medio de esta app");
-		model.setViewName("hello");
+		model.addObject("accesToken", accessToken.getToken());
+		model.addObject("secretAccess", accessToken.getSecret());
+		model.addObject("mensaje", "Pablito clavo un clavito, que clavito clavo pablito?");
+		model.setViewName("acceso_ok");
 		return model;
 	 
 		
@@ -95,20 +97,42 @@ public class SocialController {
 	}
 	
 	
-	public static void main(String[] args) {
-		   
-		Usuario usuario = new Usuario("bambaSpring", "nose", "2786148523-2qamrro8uc8T508TGoBTCnOMPszEhd0kFFxJUaf", "EbK667Z1UCqrW9EKWtccl6VOiAyAimU8zCPndx2mq79iu");
+	
+	
+	/**
+	 * Servicio que permite generar tuits en diferentes cuentas por medio de la app. Obviamente
+	 * es necesario contar con todos los tokens requeridos.
+	 * 
+	 * @author ptamburro
+	 */
+	@RequestMapping(value = "/post/twitter")
+	public ModelAndView updateStatus(@RequestParam Map<String,String> params) {
+	//public ModelAndView updateStatus(HttpServletRequest request, HttpServletResponse response) {
 		
-		String consumerKey = "6rjiEAcIfxOGKMT0FTl2KlPKn";
-		String consumerSecret =  "VjVDs5tvNXzSJKp1Y8F5wcpQDuy8Fukrzm6wcX0x7bgHqp0e1I";
-		String accessToken = "XXX";
-		String accessTokenSecret =  "XXXX";
 		
-		  TwitterTemplate tp = new TwitterTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+		String mensaje = params.get("mensaje");
+		String access = params.get("accessToken");
+		String secret = params.get("secretAccess");
 		
-		  tp.timelineOperations().updateStatus("pablito clavo un clavito, que clavito clavo pablito?");
+		Usuario usuario = new Usuario(null, null, access, secret);		
+		TwitterTemplate tp = twitterProvider.createTemplate(usuario);
+		
+		if(mensaje.length() > 140){
+			System.out.println("Se trunca el mensaje por ser mayor a 140");
+			mensaje = mensaje.substring(0, 140);
+		}
+		
+		tp.timelineOperations().updateStatus(mensaje);
+		
+		
+		//Manejo simple de paginas 
+	   	ModelAndView model = new ModelAndView();
+		model.addObject("title", "Bamba Spring Social Twitter");
+		model.addObject("message", "Has publicado un mensaje en twitter por medio de la app");
+		model.addObject("message_1", "Verifica el mensaje en tu cuenta de twitter");
+		model.setViewName("pagina_generica");
+		return model;
 		
 	}
-	
 	
 }

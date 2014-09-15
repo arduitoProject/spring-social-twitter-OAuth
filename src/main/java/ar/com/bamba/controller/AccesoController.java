@@ -31,7 +31,7 @@ public class AccesoController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Ejemplo simple de Spring Security");
 		model.addObject("message", "Bienvenido!!");
-		model.setViewName("hello");
+		model.setViewName("pagina_generica");
 		return model;
  
 	}
