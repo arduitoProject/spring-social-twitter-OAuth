@@ -18,7 +18,7 @@ que den los permisos correspondientes.
 2. Actualizar el archivo de configuracion 'twitter.properties'. Del paso anterior, tomar el valor de apiKey/secretKey y actualizarlas en el archivo, 
    tambien callbackUrl debe ser <i>'http://xxx.xx.xx.xxx:8080/twitter/oauth/twitter'</i> (con ip de la maquina donde se esta levantando tomcat)  
 
-3.     
+3. Al agregar el proyecto a Tomcat, asegurarse que el path del mismo sea <i>/twitter</i>    
    
 
 
