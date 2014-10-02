@@ -36,6 +36,11 @@ que den los permisos correspondientes.
 2.  En una pantalla sencilla se muestran los access token de la cuenta que acepto la aplicacion y permite postear mensajes, en la cuenta
     del usuario, utilizando servicios del codigo.     
 
+	![ScreenShot](https://github.com/elbambaproject/spring-social-twitter-OAuth/blob/master/src/main/webapp/WEB-INF/github-img/tuit-app.png)
+	
+3.	Escribir algo en el campo 'mensaje', seleccionar boton 'tuitear', luego en tu cuenta debe aparecer el tuit.
+
+	![ScreenShot](https://github.com/elbambaproject/spring-social-twitter-OAuth/blob/master/src/main/webapp/WEB-INF/github-img/tuit-generated.png)
 
 ### Servicios expuestos
 
