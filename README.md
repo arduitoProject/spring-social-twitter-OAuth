@@ -1,5 +1,7 @@
 
->> Spring Social Twitter OAuth  <b>@author ptamburro</b>
+![alt tag](https://github.com/elbambaproject/spring-social-twitter-OAuth/blob/master/src/main/webapp/WEB-INF/github-img/header.png)
+### Spring Social Twitter OAuth  
+##<b>@author ptamburro</b>
 
 Ejemplo de Spring Social con Twitter, que incluye la autentificacion OAuth 1.0a.<br>
 Esta aplicacion permite desde una jsp generar tuits directamente en la cuenta de usuarios
@@ -7,7 +9,7 @@ que den los permisos correspondientes.
 
  
 
->> Configuraciones previas
+### Configuraciones previas
 
 1. Crear la app en Twitter
    (buen tutorial para hacerlo: <i>http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/</i>)<br> 
@@ -32,14 +34,14 @@ que den los permisos correspondientes.
     del usuario, utilizando servicios del codigo.     
 
 
->> Servicios expuestos
+### Servicios expuestos
 
 	http://xxx.xx.xx.xxx:8080/twitter/oauth/twitter  (obtiene de twitter request token / OAuth)
 	http://xxx.xx.xx.xxx:8080/twitter/callback/twitter (Twitter direcciona a esta url luego de que el usuario acepte permisos de app)
 	http://xxx.xx.xx.xxx:8080/twitter/post/twitter (postea en cuentas de twitter luego de tener tokens de acceso)
 
 
->> Tecnologias usadas
+### Tecnologias usadas
 - Spring Social Twitter
 - Spring MVC
 - Scribe OAuth Library
