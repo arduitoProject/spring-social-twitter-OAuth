@@ -10,7 +10,7 @@ que den los permisos correspondientes.
 >> Configuraciones previas
 
 1. Crear la app en Twitter
-   (buen tutorial para hacerlo ->  http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/) 
+   (buen tutorial para hacerlo: <i>http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/</i>)<br> 
    Tener en cuenta de agregarle permisos de 'Read and Write' y url callback debe ser <i>'http://xxx.xx.xx.xxx:8080/twitter/oauth/twitter'</i> 
    (con ip de la maquina donde se esta levantando tomcat)
    
@@ -20,7 +20,7 @@ que den los permisos correspondientes.
 3. Levantar en Tomcat puerto 8080 (modificando el path para que quede en <i>'/twitter'</i>)  
    
 
->> Prueba del codigo.
+### Prueba del codigo.
 
 1.  Acceder a http://xxx.xx.xx.xxx:8080/twitter/oauth/twitter
          
