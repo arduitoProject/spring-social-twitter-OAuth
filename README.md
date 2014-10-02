@@ -1,7 +1,7 @@
 
 ![alt tag](https://github.com/elbambaproject/spring-social-twitter-OAuth/blob/master/src/main/webapp/WEB-INF/github-img/header.png)
-### Spring Social Twitter OAuth  
-##<b>@author ptamburro</b>
+## Spring Social Twitter OAuth  
+####<b>@author ptamburro</b>
 
 Ejemplo de Spring Social con Twitter, que incluye la autentificacion OAuth 1.0a.<br>
 Esta aplicacion permite desde una jsp generar tuits directamente en la cuenta de usuarios
@@ -29,6 +29,9 @@ que den los permisos correspondientes.
     Esto lo que hace es pedir un token a twitter y mostrar la pantalla de autorizacion de twitter para acceder a la app. (oauth)
     Luego dar la autorizacion, se obtienen los access token del usuario (oauth) 
     se redirige a la pantalla que indica el servicio /callback 
+    
+ 	![ScreenShot](https://github.com/elbambaproject/spring-social-twitter-OAuth/blob/master/src/main/webapp/WEB-INF/github-img/autorize.png)
+    
     
 2.  En una pantalla sencilla se muestran los access token de la cuenta que acepto la aplicacion y permite postear mensajes, en la cuenta
     del usuario, utilizando servicios del codigo.     
